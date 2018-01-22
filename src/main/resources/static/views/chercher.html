@@ -1,0 +1,128 @@
+<head>
+
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.5/angular.js"></script>
+<script src="http://angular-ui.github.com/bootstrap/ui-bootstrap-tpls-0.1.0.js"></script>
+<link rel="stylesheet" type="text/css"
+href="../node_modules/bootstrap/dist/css/bootstrap.min.css"/>
+<link rel="stylesheet" type="text/css"
+href="../css/myStyle.css"/>
+<meta charset="utf-8">
+</head>
+<div class="container spacer">
+	<div class="panel panel-default">
+		<div class="panel-heading">Inscription d'une association</div>
+		<div class="panel-body">
+		  <div class="formcontainer">
+		    <form class="form-horizontal">
+		     
+		   
+		     <input class="form-control input-sm" required type="hidden" ng-model="associat.id" >
+		  <div class="row">
+	         <div class="form-group col-md-12">
+			     <label class="col-md-2 control-lable" >Nom:</label>
+			      <div class="col-md-7">
+			         <input class="username form-control input-sm" type="text" ng-model="associat.nom" >
+			      </div>
+			 </div>
+		</div>
+		  <div class="row">
+	         <div class="form-group col-md-12">
+			     <label class="col-md-2 control-lable" >Sigle:</label>
+			      <div class="col-md-7"> 
+			       <input class="username form-control input-sm" type="text" ng-model="associat.sigle">
+			       </div>
+		     </div>
+		   </div>
+		     
+		   <div class="row">
+	         <div class="form-group col-md-12">
+			     <label class="col-md-2 control-lable" >Objet Social:</label>
+			     <div class="col-md-7"> 
+		           <input class="username form-control input-sm" type="text" ng-model="associat.objet_social" >
+		         </div>
+		      </div>
+		    </div>
+		    <div class="row">
+	         <div class="form-group col-md-12">
+			     <label class="col-md-2 control-lable" >Tel:</label>
+			     <div class="col-md-7"> 
+		           <input class="username form-control input-sm" type="text" ng-model="associat.tel" >
+		         </div>
+		        </div>
+		      </div>
+		     <div class="row">
+	         <div class="form-group col-md-12">
+			     <label class="col-md-2 control-lable" >Email:</label>
+			     <div class="col-md-7"> 
+		           <input class="username form-control input-sm" type="text" ng-model="associat.email"> 
+		         </div>
+		      </div>
+		     </div>
+		     <div class="row">
+	         <div class="form-group col-md-12">
+			     <label class="col-md-2 control-lable" >Login:</label>
+			     <div class="col-md-7"> 
+		           <input class="username form-control input-sm" type="text" ng-model="associat.login">
+		         </div>
+		        </div>
+		      </div>
+		     <div class="row">
+	         <div class="form-group col-md-12">
+			     <label class="col-md-2 control-lable" >Mot de passe:</label>
+			     <div class="col-md-7">  
+		           <input class="username form-control input-sm" type="text" ng-model="associat.mdp"> 
+		          </div>
+		         </div>
+		      </div>
+		    
+
+		    <div>
+		       <input type="submit" id="btnAjout" value ="ajouter" class="btn btn-primary custom-width" ng-click="saveAssociation()" class="btn btn-primary">
+		    </div>
+		   </form>
+		   </div>
+		</div>
+	</div>
+</div>
+
+<div class="panel panel-default">
+<div class="container" ng-init="ListAll()">
+<div class="container spacer">
+	    <input type="text" ng-model="motCle">
+		<button ng-click="chercherAssociation()" class="btn btn-primary custom-width">Search</button>
+</div>
+		<div class="panel-body">
+			<div class="table-responsive">
+		        <table class="table table-hover">
+		            <thead>
+   	   <tr>
+   	    <th>Id</th><th>Nom</th><th>Objet social</th>
+   	    <th>Email</th><th>Tel</th>
+   	    </tr>
+   	 </thead>
+   	 <tbody>
+   	  <tr ng-repeat="p in pageAssociations">
+   	  	<td>{{p.id}}</td>
+   	  	<td>{{p.nom}}</td>
+   	  	<td>{{p.objet_social}}</td>
+   	  	<td>{{p.email}}</td>
+   	  	<td>{{p.tel}}</td>
+ <td><input type="submit" value ="Supprimer "  ng-click="SupprimerAssociation(p.id)" class="btn btn-danger custom-width">
+ </td>  	  	
+  <td><input type="submit" value ="Modifier "  ng-click="RecupererAssociation(p.id)" class="btn btn-success custom-width">
+ </td>           	  	
+   	  </tr>
+   	 </tbody>
+   </table> 
+ </div>
+ </div>
+ </div>
+
+   <div class="container">
+   	<ul class="nav nav-pills">
+   		<li  class="clickable" ng-repeat="pg in pages track by $index"  ng-click="gotoPage($index)">
+   		   <a >{{$index}}</a>
+   		</li>
+   	</ul>
+   </div>  
+   </div>

@@ -1,0 +1,35 @@
+<div class="panel panel-default">
+<div class="container" ng-init="chercherAssociationAttente()">
+		<div class="panel-body">
+			<div class="table-responsive">
+		        <table class="table table-hover">
+		            <thead>
+   	   <tr>
+   	    <th>Id</th><th>Nom</th><th>Objet social</th>
+   	    <th>Email</th><th>Tel</th>
+   	    </tr>
+   	 </thead>
+   	 <tbody>
+   	  <tr ng-repeat="p in ListAssociationsAttente">
+   	  	<td>{{p.id}}</td>
+   	  	<td>{{p.nom}}</td>
+   	  	<td>{{p.objet_social}}</td>
+   	  	<td>{{p.email}}</td>
+   	  	<td>{{p.etat}}</td>
+ <td><input type="submit" value ="Valider "  ng-click="SupprimerAssociation(p.id)" class="btn btn-success custom-width">
+ </td>  	  	          	  	
+   	  </tr>
+   	 </tbody>
+   </table> 
+ </div>
+ </div>
+ </div>
+
+   <div class="container">
+   	<ul class="nav nav-pills">
+   		<li  class="clickable" ng-repeat="pg in pages track by $index"  ng-click="gotoPage($index)">
+   		   <a >{{$index}}</a>
+   		</li>
+   	</ul>
+   </div>  
+   </div>
